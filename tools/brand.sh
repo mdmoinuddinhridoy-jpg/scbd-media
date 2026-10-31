@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 # Brand an image or video for Secret Collection BD.
 # Top-left: original logo exactly as given (tools/logo-original.png) - colours/text unchanged,
-# 25% of media width, 3% margin, 50% opacity, Lanczos resize + light sharpen so it stays crisp when zoomed.
+# 25% of media width, 3% margin, 70% opacity, Lanczos resize + light sharpen so it stays crisp when zoomed.
 # Images: PNG lossless / JPG quality 98 (4:4:4); video CRF 16 (near-lossless), audio copied.
 # Usage: tools/brand.sh <input> <output>
 set -euo pipefail
 IN="$1"; OUT="$2"
 HERE="$(cd "$(dirname "$0")" && pwd)"
-LOGO_SIZE=0.25; MARGIN=0.03; OPACITY=0.5
+LOGO_SIZE=0.25; MARGIN=0.03; OPACITY=0.7
 TMP="$(mktemp -d)"; trap 'rm -rf "$TMP"' EXIT
 
 W=$(ffprobe -v error -select_streams v:0 -show_entries stream=width -of csv=p=0 "$IN")
