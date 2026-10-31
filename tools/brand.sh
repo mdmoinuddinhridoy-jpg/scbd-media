@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Brand an image or video for Secret Collection BD.
 # Logo top-left, margin = 3% of width.
-#  - Image logo (tools/logo.png): width 18%, 80% opacity
+#  - Brand logo (tools/logo.png: bra+leaf mark + Poppins name, white w/ black outline): width 50%, 100% opacity
 #  - Text logo (fallback): elegant serif, white fill + solid black outline, width 40%, 100% opacity
 # Usage: tools/brand.sh <input> <output> [logo.png]
 # Env: FONT=<ttf name in tools/fonts> (default PlayfairDisplay-Bold.ttf)
@@ -10,7 +10,7 @@ IN="$1"; OUT="$2"
 HERE="$(cd "$(dirname "$0")" && pwd)"
 LOGO="${3:-$HERE/logo.png}"
 FONT="$HERE/fonts/${FONT:-PlayfairDisplay-Bold.ttf}"
-OPACITY=0.8; SIZE=0.18; MARGIN=0.03
+OPACITY=1.0; SIZE=0.50; MARGIN=0.03
 TMP="$(mktemp -d)"; trap 'rm -rf "$TMP"' EXIT
 
 if [[ ! -f "$LOGO" ]]; then
