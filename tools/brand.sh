@@ -15,7 +15,8 @@ if [[ ! -f "$LOGO" ]]; then
   LOGO="$TMP/textlogo.png"
   SIZE=0.30
   convert -background none -fill white -font Poppins-Bold -pointsize 200 label:"Secret Collection BD" "$TMP/t.png"
-  convert "$TMP/t.png" -bordercolor none -border 30 \( +clone -fill black -colorize 100 -channel A -evaluate multiply 0.55 +channel -blur 0x12 \) \
+  # white text with solid black outline
+  convert "$TMP/t.png" -bordercolor none -border 30 \( +clone -fill black -colorize 100 -channel RGBA -morphology Dilate Disk:9 +channel \) \
     +swap -compose over -composite +repage "$LOGO"
 fi
 
